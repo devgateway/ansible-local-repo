@@ -1,0 +1,12 @@
+{% macro yum_array(name, values, prefix='', suffix='') %}
+{{ name }}={% for val in values %}{{ prefix }}{{ val }}{{ suffix }} {% endfor %}
+{% endmacro %}
+[{{ localrepo_name }}]
+name={{ localrepo_desc }}
+{{ yum_array('baseurl', localrepo_baseurl) }}
+enabled=1
+gpgcheck={{ 1 if rpm_gpg_keys is defined else 0 }}
+cost={{ localrepo_cost }}
+{% if rpm_gpg_keys is defined -%}
+	{{ yum_array('gpgkey', rpm_gpg_keys, 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-') }}
+{%- endif %}

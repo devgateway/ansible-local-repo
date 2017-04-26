@@ -1,0 +1,16 @@
+---
+- name: Install GPG keys
+  copy: >
+    src=gpg/RPM-GPG-KEY-{{ item }}
+    dest={{ rpm_gpg_dir }}
+    mode=0644
+    seuser=system_u
+    serole=object_r
+    setype=cert_t
+  with_items: "{{ rpm_gpg_keys }}"
+  when: rpm_gpg_keys is defined
+
+- name: Configure local repo
+  template: >
+    src=local.repo.j2
+    dest=/etc/yum.repos.d/{{ localrepo_name }}.repo

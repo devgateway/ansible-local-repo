@@ -1,0 +1,5 @@
+---
+rpm_gpg_dir: /etc/pki/rpm-gpg
+localrepo_name: local
+localrepo_desc: Local packages
+localrepo_cost: 500
