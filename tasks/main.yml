@@ -1,7 +1,7 @@
 ---
 - name: Install GPG keys
   copy: >
-    src=gpg/RPM-GPG-KEY-{{ item }}
+    src={{ item }}
     dest={{ rpm_gpg_dir }}
     mode=0644
     seuser=system_u
