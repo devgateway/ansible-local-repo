@@ -5,6 +5,9 @@
 name={{ localrepo_desc }}
 {{ yum_array('baseurl', localrepo_baseurl) }}
 enabled=1
+{% if localrepo_ignore_proxy | default(True) %}
+proxy=_none_
+{% endif %}
 gpgcheck={{ 1 if rpm_gpg_keys is defined else 0 }}
 cost={{ localrepo_cost }}
 {% if rpm_gpg_keys is defined -%}
