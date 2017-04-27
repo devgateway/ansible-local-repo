@@ -1,0 +1,4 @@
+---
+- name: Import RPM GPG keys
+  rpm_key: key={{ rpm_gpg_dir }}/RPM-GPG-KEY-{{ item }}
+  with_items: "{{ rpm_gpg_keys }}"
