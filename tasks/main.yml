@@ -11,6 +11,10 @@
   when: rpm_gpg_keys is defined
   notify: Import RPM GPG keys
 
+- name: Import RPM GPG keys
+  rpm_key: key={{ rpm_gpg_dir }}/{{ item }}
+  with_items: "{{ rpm_gpg_keys }}"
+
 - name: Configure local repo
   template: >
     src=local.repo.j2
