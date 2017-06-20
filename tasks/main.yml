@@ -9,7 +9,6 @@
     setype=cert_t
   with_items: "{{ rpm_gpg_keys }}"
   when: rpm_gpg_keys is defined
-  notify: Import RPM GPG keys
 
 - name: Import RPM GPG keys
   rpm_key: key={{ rpm_gpg_dir }}/{{ item }}
