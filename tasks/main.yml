@@ -13,6 +13,7 @@
 - name: Import RPM GPG keys
   rpm_key: key={{ rpm_gpg_dir }}/{{ item }}
   with_items: "{{ rpm_gpg_keys }}"
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Configure local repo
   template: >
