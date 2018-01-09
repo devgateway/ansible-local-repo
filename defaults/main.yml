@@ -1,6 +1,3 @@
 ---
-rpm_gpg_dir: /etc/pki/rpm-gpg
-localrepo_name: local
-localrepo_desc: Local packages
-localrepo_cost: 500
-localrepo_ignore_proxy: True
+repo_gpg_path: /etc/pki/rpm-gpg
+repo_gpg_prefix: RPM-GPG-KEY-

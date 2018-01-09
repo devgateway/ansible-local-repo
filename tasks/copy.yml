@@ -1,8 +1,8 @@
 ---
-- name: Copy GPG key {{ name }}
+- name: Copy GPG key {{ gpg_name }}
   copy:
     content: "{{ gpg_key }}"
-    dest: /etc/pki/rpm-gpg/RPM-GPG-KEY-{{ name }}
+    dest: "{{ repo_gpg_path }}/{{ repo_gpg_prefix }}{{ gpg_name }}"
     mode: 0644
     seuser: system_u
     serole: object_r

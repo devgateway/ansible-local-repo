@@ -1,8 +1,8 @@
 ---
-- name: Download GPG key {{ name }}
+- name: Download GPG key {{ gpg_name }}
   get_url:
     url: "{{ gpg_key }}"
-    dest: /etc/pki/rpm-gpg/RPM-GPG-KEY-{{ name }}
+    dest: "{{ repo_gpg_path }}/{{ repo_gpg_prefix }}{{ gpg_name }}"
     mode: 0644
     seuser: system_u
     serole: object_r
