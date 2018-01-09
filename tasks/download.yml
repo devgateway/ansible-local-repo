@@ -1,0 +1,9 @@
+---
+- name: Download GPG key {{ name }}
+  get_url:
+    url: "{{ gpg_key }}"
+    dest: /etc/pki/rpm-gpg/RPM-GPG-KEY-{{ name }}
+    mode: 0644
+    seuser: system_u
+    serole: object_r
+    setype: cert_t
