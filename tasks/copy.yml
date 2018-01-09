@@ -1,8 +1,8 @@
 ---
-- name: Copy GPG key {{ gpg_name }}
+- name: Copy GPG key {{ repo_gpg_name }}
   copy:
-    content: "{{ gpg_key }}"
-    dest: "{{ repo_gpg_path }}/{{ repo_gpg_prefix }}{{ gpg_name }}"
+    content: "{{ repo_gpg_key }}"
+    dest: "{{ repo_gpg_path }}/{{ repo_gpg_prefix }}{{ repo_gpg_name }}"
     mode: 0644
     seuser: system_u
     serole: object_r

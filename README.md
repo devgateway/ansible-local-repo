@@ -7,11 +7,11 @@ Role Variables
 
 ## Required
 
-### `gpg_name`
+### `repo_gpg_name`
 
 Name of the key. Becomes part of the destination file name, see `repo_gpg_path` and `repo_gpg_prefix`.
 
-### `gpg_key`
+### `repo_gpg_key`
 
 Can be a URL or literal key contents, see example below.
 
@@ -38,13 +38,13 @@ Example Playbook
           include_role:
             name: devgateway.rpm-gpg
           vars:
-            gpg_name: "{{ item.gpg_name }}"
-            gpg_key: "{{ item.gpg_key }}"
+            repo_gpg_name: "{{ item.name }}"
+            repo_gpg_key: "{{ item.key }}"
           with_items:
-            - gpg_name: foo
-              gpg_key: https://packages.example.org/foo.key
-            - gpg_name: bar
-              gpg_key: |
+            - name: foo
+              key: https://packages.example.org/foo.key
+            - name: bar
+              key: |
                 -----BEGIN PGP PUBLIC KEY BLOCK-----
                 
                 mQENBE+O/7IBCAC+6ZqjV2GRJ5B3TmdWOOkHbKkcQCWHyYpPxtceRtG9qK3viKc7

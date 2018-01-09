@@ -1,8 +1,8 @@
 ---
-- name: Install GPG key {{ gpg_name }}
-  include_tasks: "{{ gpg_key | search('^(ftp|https?)://') | ternary('download', 'copy') }}.yml"
+- name: Install GPG key {{ repo_gpg_name }}
+  include_tasks: "{{ repo_gpg_key | search('^(ftp|https?)://') | ternary('download', 'copy') }}.yml"
 
-- name: Import RPM GPG key {{ gpg_name }}
+- name: Import RPM GPG key {{ repo_gpg_name }}
   rpm_key:
-    key: "{{ repo_gpg_path }}/{{ repo_gpg_prefix }}{{ gpg_name }}"
+    key: "{{ repo_gpg_path }}/{{ repo_gpg_prefix }}{{ repo_gpg_name }}"
   when: not ansible_check_mode
