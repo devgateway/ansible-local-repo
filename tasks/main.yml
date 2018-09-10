@@ -1,6 +1,11 @@
 ---
 - name: Install GPG key {{ repo_gpg_name }}
-  include_tasks: "{{ repo_gpg_key | search('^(ftp|https?)://') | ternary('download', 'copy') }}.yml"
+  include_tasks: |-
+    {%  if repo_gpg_key is search('^(ftp|https?)://') -%}
+    download.yml
+    {%- else -%}
+    copy.yml
+    {%- endif %}
 
 - name: Import RPM GPG key {{ repo_gpg_name }}
   rpm_key:
